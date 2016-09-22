@@ -1,0 +1,49 @@
+<!-- 图片滚动 -->
+<div id="slider" class="carousel slide" data-ride="carousel">
+    <ol class="carousel-indicators">
+        <@jp.contents module="article" count="5" flag="top">
+        <#list contents as content>
+            <#if content_index==0>
+                    <li data-target="#slider" data-slide-to="${content_index!0}" class="active"></li>
+                <#else>
+                    <li data-target="#slider" data-slide-to="${content_index!0}" class=""></li>
+            </#if>
+
+        </#list>
+    </@jp.contents>
+    </ol>
+    <div class="carousel-inner">
+        <@jp.contents module="article" count="5" flag="top">
+        <#list contents as content>
+            <#if content_index==0>
+                <div class="item active">
+                    <a target="_blank" href="${content.url!}">
+                        <img src="${CDN!}${content.thumbnailByName('banner')!}"  data-original="${CDN!}${content.thumbnailByName('banner')!CTPATH+'/images/thumbnail.png'}">
+                        <span class="carousel-caption">${content.title!}</span>
+                        <span class="carousel-bg"></span>
+                    </a>
+                </div>
+                <#else>
+                    <div class="item">
+                        <a target="_blank" href="${content.url!}">
+                            <img src="${CDN!}${content.thumbnailByName('banner')!}"  data-original="${CDN!}${content.thumbnailByName('banner')!CTPATH+'/images/thumbnail.png'}">
+                            <span class="carousel-caption">${content.title!}</span>
+                            <span class="carousel-bg"></span>
+                        </a>
+                    </div>
+            </#if>
+
+        </#list>
+    </@jp.contents>
+</div>
+
+<a class="left carousel-control" href="#slider" role="button" data-slide="prev">
+    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+</a>
+
+<a class="right carousel-control" href="#slider" role="button" data-slide="next">
+    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+</a>
+
+</div>
+<!-- 图片滚动 -->

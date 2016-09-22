@@ -1,0 +1,10 @@
+<div class="widget widget_links">
+    <h3 class="title"><strong>友情链接</strong></h3>
+    <ul class="xoxo blogroll">
+        <@jp.contents module="article" count="8" typeSlug="links">
+            <#list contents as content>
+                <li><a href="${content.metadata('_link')!}" target="_blank">${content.title!}</a> </li>
+            </#list>
+        </@jp.contents>
+    </ul>
+</div>

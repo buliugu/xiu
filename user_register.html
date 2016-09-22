@@ -1,0 +1,97 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <#include "inc/meta.html"/>
+  <script language="javascript" type="text/javascript" src="${CTPATH}/js/jquery.js?ver=5.2"></script>
+
+  <script type="text/javascript">
+
+    function changeAuthCode() {
+      var num = 	new Date().getTime();
+      var rand = Math.round(Math.random() * 10000);
+      num = num + rand;
+      $('#ver_code').css('visibility','visible');
+      if ($("#login-item-reg #vdimgck")[0]) {
+        $("#login-item-reg #vdimgck")[0].src = "${CPATH}/captcha?tag=" + num;
+      }
+      if ($("#login-item-login #vdimgck")[0]) {
+        $("#login-item-login #vdimgck")[0].src = "${CPATH}/captcha?tag=" + num;
+      }
+      return false;
+    }
+    function getPassword(){
+      var pass = document.form2.userpwd.value;
+      document.form2.userpwdok.value = pass;
+    }
+    function getUname(){
+      var pass = document.form2.userid.value;
+      document.form2.uname.value = pass;
+    }
+  </script>
+</head>
+<html>
+<body class="page page-id-1885 page-template page-template-pagesuser-php" >
+<div class="container container-user loginshow">
+  <div class="modal fade" id="modal-login" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog" style="margin-top:200px;width:480px;">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+          <h4 class="modal-title">登录或注册</h4>
+        </div>
+        <div class="modal-body">
+          <div class="login-form">
+
+            <form method="post" action="${CPATH}/user/doRegister" name="form2" class="login-item hide" id="login-item-reg">
+              <input type="hidden" value="regbase" name="dopost">
+              <input type="hidden" value="1" name="step">
+              <input type="hidden" value="个人" name="mtype">
+              <h5><small evt="login.to.login"><span class="glyphicon glyphicon-share-alt"></span> 登录</small>注册</h5>
+              <h6>
+                <label for="txtUsername">用户名</label>
+                <input type="text" id="txtUsername" name="userid" class="form-control" placeholder="设置登陆账号" style="width:360px" onblur="getUname()">
+                <input type="hidden" class="intxt w200" size="20" value="" id="uname" name="uname">
+              </h6>
+              <h6>
+                <label for="email">邮箱</label>
+                <input type="email" id="email" name="email" class="form-control" placeholder="邮箱" style="width:360px">
+              </h6>
+
+              <h6>
+                <label for="txtPassword">密码</label>
+                <input type="password" id="txtPassword" name="userpwd" class="form-control" placeholder="设置登录密码" style="width:360px" onblur="getPassword()">
+                <input type="hidden" class="intxt w200" size="20" value="" id="userpwdok" name="userpwdok">
+              </h6>
+              <h6>
+                <label for="vdcode">验证码</label>
+                <input type="text" name="_register_captcha" id="vdcode" class="form-control" style="width:80px;text-transform: uppercase;float:left;">
+                <img id="vdimgck" align="absmiddle" onclick="this.src=this.src+'?'" style="cursor: pointer;padding-top:5px;padding-left:5px;float:left;width: 65px;height: 30px;" alt="看不清？点击更换" src="${CPATH}/captcha">
+                <div style="width:200px;height:34px;line-height:34px;float:left;margin-left:10px;">看不清？ <a href="#" onclick="changeAuthCode();">点击更换</a></div>
+              </h6>
+              <div class="login-submit">
+                <input type="submit" class="btn" name="submit" value="快速注册">
+              </div>
+            </form>
+            <div class="login-tips"></div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+<script>
+  window.jui = {
+    uri: '${CTPATH}',
+    roll: '1 2',
+    ajaxpager: '0'
+  }
+</script>
+<script language="javascript" type="text/javascript" src="${CTPATH}/js/jquery.js?ver=5.2"></script>
+<script language="javascript" type="text/javascript" src="${CTPATH}/js/jquery.foxaudioplayer.js?ver=4.3.4"></script>
+<script language="javascript" type="text/javascript" src="${CTPATH}/js/bootstrap.min.js?ver=5.2"></script>
+<script language="javascript" type="text/javascript" src="${CTPATH}/js/hammer.min.js"></script>
+<script language="javascript" type="text/javascript" src="${CTPATH}/js/custom.js?ver=5.2"></script>
+</body>
+</html>
